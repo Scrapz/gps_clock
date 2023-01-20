@@ -382,15 +382,10 @@ uint8_t sync_time (uint8_t *time)
 		{
 			return(FALSE);		//If the time data is no good, exit the function and return FALSE.
 		}
-		else
-		{
-			apply_offset();		//Since the time appears valid, apply the UTC offset.
-			rtc_set_time(time);	//Valid time from GPS so update the real-time clock module.
-			return(TRUE);		//This will only be reached if the function received valid time data from the GPS module, so return TRUE.
-		}
 	}
-
-	return(FALSE);		//Should not reach this.
+	apply_offset();		//Since the time appears valid, apply the UTC offset.
+	rtc_set_time(time);	//Valid time from GPS so update the real-time clock module.
+	return(TRUE);		//This will only be reached if the function received valid time data from the GPS module, so return TRUE.
 }
 
 //Offset range is -120 to +120 whereby actual offset in half-hour increments correspond to values of 5 (e.g. -120:-12.0hrs, +65:+6.5hrs)
