@@ -22,7 +22,7 @@ BAUD  = 9600UL
 
 PROGRAMMER_TYPE = usbtiny
 # extra arguments to avrdude: baud rate, chip type, -F flag, etc.
-PROGRAMMER_ARGS =
+PROGRAMMER_ARGS = -B 10
 
 ##########------------------------------------------------------##########
 ##########                  Program Locations                   ##########
@@ -94,7 +94,7 @@ TARGET_ARCH = -mmcu=$(MCU)
 
 ##  Make .o (object) files from .c files
 %.o: %.c $(HEADERS) makefile
-	 $(CC) $(CFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c -o $@ $<;
+	 $(CC) $(CFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c -o $@ $<
 #### Notes:
 ###### -c: Compile or assemble the source files, but do not link.
 ###### -o <file>: Place output in file <file>.
